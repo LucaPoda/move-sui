@@ -19,6 +19,10 @@ tempfile.workspace = true
 walkdir.workspace = true
 codespan-reporting.workspace = true
 toml_edit.workspace = true
+toml.workspace = true
+cargo_metadata.workspace = true
+current_platform.workspace = true
+rustc_version.workspace = true
 
 bcs.workspace = true
 
@@ -44,6 +48,7 @@ move-prover.workspace = true
 move-unit-test.workspace = true
 move-errmapgen.workspace = true
 move-bytecode-viewer.workspace = true
+move-fuzzer.workspace = true
 
 [dev-dependencies]
 datatest-stable.workspace = true

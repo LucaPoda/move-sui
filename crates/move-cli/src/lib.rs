@@ -10,6 +10,7 @@ use move_package::BuildConfig;
 
 pub mod base;
 pub mod sandbox;
+pub mod fuzz;
 
 /// Default directory where saved Move resources live
 pub const DEFAULT_STORAGE_DIR: &str = "storage";
@@ -63,6 +64,10 @@ pub enum Command {
     Disassemble(Disassemble),
     Docgen(Docgen),
     Errmap(Errmap),
+    Fuzz {
+        #[clap(subcommand)]
+        cmd: fuzz::Fuzz
+    },
     Info(Info),
     Migrate(Migrate),
     New(New),
@@ -95,6 +100,7 @@ pub fn run_cli(
         Command::Disassemble(c) => c.execute(move_args.package_path, move_args.build_config),
         Command::Docgen(c) => c.execute(move_args.package_path, move_args.build_config),
         Command::Errmap(c) => c.execute(move_args.package_path, move_args.build_config),
+        Command::Fuzz{cmd} => cmd.execute(move_args.package_path, move_args.build_config),
         Command::Info(c) => c.execute(move_args.package_path, move_args.build_config),
         Command::Migrate(c) => c.execute(move_args.package_path, move_args.build_config),
         Command::New(c) => c.execute_with_defaults(move_args.package_path),
